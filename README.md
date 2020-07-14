@@ -1,1 +1,1 @@
-# hqgooglebot-v.2
+# All in one discord bot
