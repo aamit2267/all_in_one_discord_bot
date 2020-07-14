@@ -1,11 +1,5 @@
 discord.py
-lomond
-unidecode
+discord
 datetime
-termcolor
-bs4
-colorama
-requests
-aniso8601
-pytz
-websocket_client
+time
+asyncio
