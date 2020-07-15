@@ -296,6 +296,16 @@ async def q12(ctx):
     await ctx.send(embed=embed)
 
 @bot.command()
+async def hideall(ctx):
+    for hideall in ctx.guild.channels:
+        await hideall.set_permissions(ctx.guild.default_role, view_channel=False)
+
+@bot.command()
+async def visibleall(ctx):
+    for visibleall in ctx.guild.channels:
+        await visibleall.set_permissions(ctx.guild.default_role, view_channel=True)
+
+@bot.command()
 async def help(ctx):
     embed = discord.Embed(title="Help-Commands", description="These are some commands.")
     embed.add_field(name="<userinfo", value="it will let you know about a user.", inline=False)
@@ -314,6 +324,8 @@ async def help(ctx):
     embed.add_field(name="<ban <member_mentioned>", value="ban a user", inline=False)
     embed.add_field(name="<say <message>", value="reply same message", inline=False)
     embed.add_field(name="<dm <message>", value="DM whole server", inline=False)
+    embed.add_field(name="<hideall", value="Hides every channel", inline=False)
+    embed.add_field(name="<visible all", value="Unhide every channel", inline=False)
     await ctx.send(embed=embed)
 
 bot.run(TOKEN)
