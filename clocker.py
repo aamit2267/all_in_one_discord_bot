@@ -296,14 +296,71 @@ async def q12(ctx):
     await ctx.send(embed=embed)
 
 @bot.command()
+@commands.has_permissions(administrator=True)
 async def hideall(ctx):
     for hideall in ctx.guild.channels:
         await hideall.set_permissions(ctx.guild.default_role, view_channel=False)
+    await ctx.send("All channel hidden.")
 
 @bot.command()
+@commands.has_permissions(administrator=True)
 async def visibleall(ctx):
     for visibleall in ctx.guild.channels:
         await visibleall.set_permissions(ctx.guild.default_role, view_channel=True)
+    await ctx.send("All channels are visible now")
+
+@bot.command()
+@commands.has_permissions(administrator=True)
+async def hide(ctx, channel: discord.TextChannel):
+    await channel.set_permissions(ctx.guild.default_role, view_channel=False)
+    await ctx.send(f"{channel} is hidden now.")
+
+@bot.command()
+@commands.has_permissions(administrator=True)
+async def visible(ctx, channel: discord.TextChannel):
+    await channel.set_permissions(ctx.guild.default_role, view_channel=True)
+    await ctx.send(f"{channel} is visible now.")
+
+@bot.command()
+@commands.has_permissions(administrator=True)
+async def hideall_vc(ctx):
+    for hideall_vc in ctx.guild.voice_channels:
+        await hideall_vc.set_permissions(ctx.guild.default_role, view_channel=False)
+    await ctx.send("All voice channels is hidden now.")
+
+@bot.command()
+@commands.has_permissions(administrator=True)
+async def visibleall_vc(ctx):
+    for visibleall_vc in ctx.guild.voice_channels:
+        await visibleall_vc.set_permissions(ctx.guild.default_role, view_channel=True)
+    await ctx.send("All voice channels is visible now.")
+
+@bot.command()
+@commands.has_permissions(administrator=True)
+async def hideall_text(ctx):
+    for hideall_text in ctx.guild.text_channels:
+        await hideall_text.set_permissions(ctx.guild.default_role, view_channel=False)
+    await ctx.send("Hidden all text channels")
+
+@bot.command()
+@commands.has_permissions(administrator=True)
+async def visibleall_text(ctx):
+    for visibleall_text in ctx.guild.text_channels:
+        await visibleall_text.set_permissions(ctx.guild.default_role, view_channel=True)
+    await ctx.send("All text channels is visible now.")
+
+@bot.command()
+@commands.has_permissions(administrator=True)
+async def hide_vc(ctx, channel : int):
+    ch = ctx.guild.get_channel(channel)
+    await ch.set_permissions(ctx.guild.default_role, view_channel=False)
+
+@bot.command()
+@commands.has_permissions(administrator=True)
+async def visible_vc(ctx, channel : int):
+    ch = ctx.guild.get_channel(channel)
+    await ch.set_permissions(ctx.guild.default_role, view_channel=True)
+
 
 @bot.command()
 async def help(ctx):
