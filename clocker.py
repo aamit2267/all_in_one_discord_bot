@@ -4,6 +4,7 @@ from discord.utils import get
 from datetime import datetime
 import asyncio
 import time
+from covid import Covid
 
 bot=commands.Bot(command_prefix="<")
 TOKEN='NzI4OTA3NTkwNDA2NTA0NTQw.XwwFsQ.qOnQd1Dt-2K_tlglBO9FMAHURqc'
