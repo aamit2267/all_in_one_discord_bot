@@ -3,3 +3,4 @@ discord
 datetime
 asyncio
 PyNaCl
+covid
