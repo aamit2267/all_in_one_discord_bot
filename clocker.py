@@ -60,6 +60,22 @@ async def userinfo_error(ctx, error):
         embed.set_thumbnail(url=member.avatar_url)
         await ctx.send(embed=embed)
 
+@bot.command()
+async def covid(ctx, country_name : str):
+    covi = Covid()
+    cases = covi.get_status_by_country_name(country_name)
+    embed = discord.Embed(title="COVID STATS", description=f"Here is the latest covid stats for {country_name}")
+    embed.add_field(name="ID", value=cases["id"])
+    embed.add_field(name="COUNTRY", value=cases["country"])
+    embed.add_field(name="CONFIRMED CASES", value=cases["confirmed"])
+    embed.add_field(name="ACTIVE CASES", value=cases["active"])
+    embed.add_field(name="DEATHS", value=cases["deaths"])
+    embed.add_field(name="RECOVERED", value=cases["recovered"])
+    embed.add_field(name="LATITUDE", value=cases["latitude"])
+    embed.add_field(name="LONGITUDE", value=cases["longitude"])
+    embed.add_field(name="LAST UPDATE", value=cases["last_update"])
+    await ctx.send(embed=embed)
+
 
 @bot.command(pass_context=True)
 @commands.has_permissions(administrator=True)
