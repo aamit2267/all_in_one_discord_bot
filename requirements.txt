@@ -4,3 +4,5 @@ datetime
 asyncio
 PyNaCl
 covid
+youtube-dl
+math
